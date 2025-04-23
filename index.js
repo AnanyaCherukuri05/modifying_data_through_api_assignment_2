@@ -5,12 +5,17 @@ const menuRoutes = require('./routes/menu');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Middleware
 app.use(bodyParser.json());
-mongoURI='mongodb+srv://ananyacherukuri5:tG2aoHvSbZHusZ3e@cluster0.tjmvg.mongodb.net/data?retryWrites=true&w=majority&appName=Cluster0';
+
+// MongoDB Atlas connection
+const mongoURI = 'mongodb+srv://taruntej947:qXwyBVdljaYy4Kmq@cluster0.hcdp4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
+// Routes
 app.use('/menu', menuRoutes);
 
 app.listen(port, () => {
